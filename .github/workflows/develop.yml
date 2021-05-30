@@ -1,0 +1,42 @@
+name: Elixir Develop
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    name: Build and test
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 2
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Set up Elixir
+      uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
+      with:
+        elixir-version: '1.11' # Define the elixir version [required]
+        otp-version: '23' # Define the OTP version [required]
+    - name: Restore dependencies cache
+      uses: actions/cache@v2
+      with:
+        path: deps
+        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix-
+    - name: Install dependencies
+      run: |
+        mix deps.get
+        mix compile
+    - name: Run mix format
+      run: mix format --check-formatted
+    - name: Run tests
+      run: mix test
+    - name: Run dialyzer
+      run: mix dialyzer --halt-exit-status

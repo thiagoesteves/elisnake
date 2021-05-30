@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Elisnake</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="static/images/favicon.ico">
+</head>
+
+<body onload="connectServer();">
+    <div class="header">
+      <h1>SNAKE GAME IN ELIXIR</h1>
+    </div>
+    
+    <div class="row">
+        <div class="column side" style="background-color:#F8EDED;">
+            <div></div>
+            <div></div>
+            <input  id="player" type='text' value="Player Name" maxlength="30"></input>
+            <button id="play" onclick="createSnakeGame()" placeholder="Player Name">PLAY</button>
+            <div id="current player" class='points'>
+                <div>PLAYER</div>
+                <div>YOU</div>
+                <div>POINTS</div>
+                <div>0</div>
+            </div>
+            <p></p>
+            <div id="best player" class='points'>
+            </div>
+        </div>
+        <div class="column middle" style="background-color:#F8EDED;">
+            <div class='game'></div>
+        </div>
+        <div class="column side" style="background-color:#F8EDED;">
+            Elixir Server Msg
+            <div class="scrollabletextbox" id="output"></div>
+        </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2021 - Calori Software. All rights reserved.</p>
+    </div>
+
+    <script src="static/js/script.js"></script>
+</body>
+</html>
