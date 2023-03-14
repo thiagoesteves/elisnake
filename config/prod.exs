@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # Configuration added to work with phoenix
 config :phoenix_distillery, PhoenixDistillery.Endpoint,
@@ -23,15 +23,6 @@ config :elisnake, Elisnake.Router,
   url: [host: "example.com", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
-# Do not print debug messages in production
 config :logger,
-  backends: [{LoggerFileBackend, :application_log}]
-
-config :logger, :application_log,
-  path: "/var/log/elisnake/messages",
   level: :info,
   format: "[$date] [$time] [$level] $message\n"
-
-# Finally import the config/prod.secret.exs which loads secrets
-# and configuration from environment variables.
-import_config "prod.secret.exs"

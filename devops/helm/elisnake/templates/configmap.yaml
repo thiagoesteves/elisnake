@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: elisnake-config
+  labels:
+    app: elisnake
+data:
+  {{- range $key, $value := .Values.envVar }}
+  {{ $key }}: {{ tpl $value $ | quote }}
+  {{- end }}

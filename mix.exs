@@ -49,11 +49,9 @@ defmodule Elisnake.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:gproc, git: "git://github.com/uwiger/gproc", tag: "0.9.0"},
+      {:gproc, "~> 0.9.0"},
       {:plug_cowboy, "~> 2.0"},
       {:jason, "~> 1.2"},
-      {:distillery, "~> 2.1.1"},
-      {:logger_file_backend, "~> 0.0.11"},
       # For dev only
       {:dialyxir, "~> 1.0", only: [:dev], runtime: false},
       # For test only

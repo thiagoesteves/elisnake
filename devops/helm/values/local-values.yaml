@@ -1,0 +1,14 @@
+replicaCount: 1
+service_name: "elisnake"
+
+image:
+  repository: gcr.io/elisnake
+  pullPolicy: Never
+  tag: latest
+
+envVar:
+  ENV_NAME: "dev"
+  PHX_PORT: "{{ .Values.service.port }}"
+  LOGGER_LEVEL: "info"
+  GITHUB_SHA: "{{ .Values.GITHUB_SHA }}"
+  ERLANG_COOKIE: "XXXXXXXXXXXXXXXXXXXX"

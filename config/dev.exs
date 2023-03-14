@@ -1,4 +1,4 @@
-use Mix.Config
+import Config
 
 # dev configuration
 config :logger,

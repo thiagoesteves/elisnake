@@ -197,9 +197,7 @@ defmodule ElisnakeTest do
   }
   |> Enum.each(fn {element,
                    %{next_direction: next_direction, previous_direction: previous_direction}} ->
-    test "Test:#{element} - Snake reverse not allowed previous: #{previous_direction} next_direction: #{
-           next_direction
-         }" do
+    test "Test:#{element} - Snake reverse not allowed previous: #{previous_direction} next_direction: #{next_direction}" do
       {:ok, pid} = Elisnake.GameSm.Sup.create_game(@test_username, {10, 10}, 1)
       # Insert snake bigger then 2 positions to avoid reverse moviment
       Test.Support.change_snake_position(pid, [{5, 4}, {5, 3}])

@@ -3,23 +3,28 @@
 
 # Elisnake
 
-**TODO: Add description**
-
-## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `elisnake` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:elisnake, "~> 0.1.0"}
-  ]
-end
+## Compile and run the application
+```
+mix deps.get
+iex -S mix
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/elisnake](https://hexdocs.pm/elisnake).
+Once running, you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-# elisnake
+## Deploy [Docker]
+
+### Create a docker image to deploy
+The next command will create and publish your application image into the docker
+```
+make docker.build
+```
+
+### Deploy using helm (Running locally)
+```
+make local.deploy.install
+```
+
+### Uninstall deployment
+```
+make local.deploy.uninstall
+```
