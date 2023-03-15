@@ -14,7 +14,7 @@ defmodule Elisnake.Application do
   """
   @spec start(any, any) :: {:error, any} | {:ok, pid}
   def start(_type, _args) do
-    port = System.get_env("PHX_PORT", "8888") |> String.to_integer()
+    port = System.get_env("PHX_PORT", "4000") |> String.to_integer()
 
     children = [
       Elisnake.Storage.Game,
