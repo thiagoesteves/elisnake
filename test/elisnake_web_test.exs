@@ -45,6 +45,7 @@ defmodule ElisnakeWebTest do
     :gun.shutdown(conn_pid)
   end
 
+  @tag capture_log: true
   test "Snake websocket play ok", %{port: port} do
     # Connect with the application and open the websockets
     {:ok, {conn_pid, stream_ref}} =

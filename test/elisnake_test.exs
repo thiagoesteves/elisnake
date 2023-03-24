@@ -23,6 +23,7 @@ defmodule ElisnakeTest do
     :ok
   end
 
+  @tag capture_log: true
   test "Start/Stop application cheking the supervised server" do
     assert {:ok, _} = Elisnake.GameSm.Sup.create_game(@test_username)
 
@@ -33,10 +34,12 @@ defmodule ElisnakeTest do
     assert :undefined == Test.Support.try_get_state(Elisnake.GameSm.Sup)
   end
 
+  @tag capture_log: true
   test "Create a supervised game" do
     assert {:ok, _} = Elisnake.GameSm.Sup.create_game(@test_username)
   end
 
+  @tag capture_log: true
   test "Create a supervised game with the same name" do
     assert {:ok, _} = Elisnake.GameSm.Sup.create_game(@test_username)
     assert {:error, {:already_started, _}} = Elisnake.GameSm.Sup.create_game(@test_username)
@@ -101,6 +104,7 @@ defmodule ElisnakeTest do
     assert ^expected_list = :lists.usort(read_list)
   end
 
+  @tag capture_log: true
   test "Add non existing and get the best player" do
     # Check best player is empty
     assert {:ok, []} = Elisnake.Storage.Game.get_best_player(__MODULE__)
@@ -116,6 +120,7 @@ defmodule ElisnakeTest do
     assert {:ok, [{"user_test2", 50}]} = Elisnake.Storage.Game.get_best_player(:my_game)
   end
 
+  @tag capture_log: true
   test "Snake join" do
     # Create arena game
     assert {:ok, pid} = Elisnake.GameSm.start_link(@test_username, {10, 10}, 10)
@@ -124,6 +129,7 @@ defmodule ElisnakeTest do
     assert {:join, %{username: @test_username}} = Test.Support.try_get_state(pid)
   end
 
+  @tag capture_log: true
   test "Snake start ok" do
     # Create arena game
     {:ok, pid} = Elisnake.GameSm.Sup.create_game(@test_username, {10, 10}, 10)
@@ -135,6 +141,7 @@ defmodule ElisnakeTest do
     assert {:play, %{username: @test_username}} = Test.Support.try_get_state(pid)
   end
 
+  @tag capture_log: true
   test "Snake check idle :ok" do
     # Create arena game
     {:ok, pid} = Elisnake.GameSm.Sup.create_game(@test_username, {10, 10}, 10)
@@ -149,6 +156,7 @@ defmodule ElisnakeTest do
     assert {:play, %{last_action: :idle}} = Test.Support.try_get_state(pid)
   end
 
+  @tag capture_log: true
   test "Snake already created" do
     # Create arena game
     {:ok, _} = Elisnake.GameSm.Sup.create_game(@test_username, {10, 10}, 10)
@@ -178,6 +186,7 @@ defmodule ElisnakeTest do
     end
   end)
 
+  @tag capture_log: true
   test "Snake seek food" do
     {:ok, pid} = Elisnake.GameSm.Sup.create_game(@test_username, {5, 5}, 2)
     # Put Snake in the default position
@@ -236,6 +245,7 @@ defmodule ElisnakeTest do
     assert {:game_over, %{last_action: @move_right}} = Test.Support.wait_game_over()
   end
 
+  @tag capture_log: true
   test "snake another observer" do
     {:ok, pid} = Elisnake.GameSm.Sup.create_game(@test_username, {10, 10}, 1)
     # Insert snake bigger then 2 positions to avoid reverse moviment
@@ -261,6 +271,7 @@ defmodule ElisnakeTest do
              :gproc.lookup_pids({:p, :l, {@test_username, Elisnake.GameSm, :notify_on_update}})
   end
 
+  @tag capture_log: true
   test "snake crash join" do
     {:ok, pid} = Elisnake.GameSm.Sup.create_game(@test_username, {10, 10}, 1)
     # Insert Snake in a specific position
@@ -276,6 +287,7 @@ defmodule ElisnakeTest do
              @test_username |> Elisnake.GameSm.Sup.children_pid() |> Test.Support.try_get_state()
   end
 
+  @tag capture_log: true
   test "crash recovery" do
     {:ok, pid} = Elisnake.GameSm.Sup.create_game(@test_username, {10, 10}, 1)
     # Insert Snake in a specific position
@@ -291,6 +303,7 @@ defmodule ElisnakeTest do
              @test_username |> Elisnake.GameSm.Sup.children_pid() |> Test.Support.try_get_state()
   end
 
+  @tag capture_log: true
   test "crash recovery state play" do
     {:ok, pid} = Elisnake.GameSm.Sup.create_game(@test_username, {10, 10}, 1)
     # Insert Snake in a specific position
