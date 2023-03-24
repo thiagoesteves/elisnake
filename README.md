@@ -1,7 +1,10 @@
 ![github workflow](https://github.com/thiagoesteves/elisnake/workflows/Elixir%20Develop/badge.svg)
-![ubuntu-20.04](https://actionvirtualenvironmentsstatus.azurewebsites.net/api/status?imageName=ubuntu20&badge=1)
+[![Erlant/OTP Release](https://img.shields.io/badge/Erlang-OTP--25.0-green.svg)](https://github.com/erlang/otp/releases/tag/OTP-24.0)
 
-# Elisnake
+# Game webserver written in Elixir
+![Erlgame](/doc/elisnake_snake.png)
+
+The app has the same core game written in [Erlang](https://github.com/thiagoesteves/erlgame) but translated to Elixir. It is part of the transition studies from Erlang Programming language to Elixir.
 
 ## Compile and run the application
 ```
