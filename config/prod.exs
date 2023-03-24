@@ -26,6 +26,3 @@ config :elisnake, Elisnake.Router,
 config :logger,
   level: :info,
   format: "[$date] [$time] [$level] $message\n"
-
-config :elisnake,
-  port: System.fetch_env!("PHX_PORT") |> String.to_integer()
