@@ -1,4 +1,4 @@
 erlang 24.3.4.10
 elixir 1.14-otp-24
 rebar 3.20
-helm 3.8.2
+helm 3.11.2
