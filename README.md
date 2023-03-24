@@ -1,5 +1,5 @@
 ![github workflow](https://github.com/thiagoesteves/elisnake/workflows/Elixir%20Develop/badge.svg)
-[![Erlant/OTP Release](https://img.shields.io/badge/Erlang-OTP--25.0-green.svg)](https://github.com/erlang/otp/releases/tag/OTP-24.0)
+[![Erlant/OTP Release](https://img.shields.io/badge/Erlang-OTP--24.0-green.svg)](https://github.com/erlang/otp/releases/tag/OTP-24.0)
 
 # Game webserver written in Elixir
 ![Erlgame](/doc/elisnake_snake.png)

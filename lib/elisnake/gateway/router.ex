@@ -7,7 +7,11 @@ defmodule Elisnake.Gateway.Router do
   plug(Plug.Parsers, parsers: [:json], json_decoder: Jason)
   plug(:dispatch)
 
-  get "/api/v1/ping" do
+  get "/ready" do
+    json_resp(conn, 200, "ok")
+  end
+
+  get "/health" do
     json_resp(conn, 200, "ok")
   end
 
